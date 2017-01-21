@@ -9,8 +9,11 @@ function arcSeg(x, y, innerRad, outerRad, theta0, theta1, ctx){
   ctx.fill();
 }
 
-window.onload = function() {
-  chrome.storage.sync.set({"meme":true}, null);
+function resize(){
+//  $("#big_circle").css({"top" : 2*($("body").width() - $("#big_circle").width())});
+  $("#big_circle").height($("#big_circle").width());
+}
 
-  chrome.storage.sync.get(null, function(object){console.log(object);});
+window.onload = function() {
+  resize();
 };

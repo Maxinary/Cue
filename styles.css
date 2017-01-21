@@ -4,17 +4,21 @@ body {
   text-decoration: none;
   color: "pink";
   text-align: center;
-}
-
-a {
-  font-size: 400%;
-  color: black;
-}
-
-.small_circle {
   
 }
 
-.big_circle {
-  
+html, body {
+    overflow-y: auto;
+}
+
+#big_circle {
+  width:90%;
+}
+
+#list-of-tasks {
+  overflow-y:auto;
+}
+
+#list-of-tasks > * > *{
+  display:inline-block;
 }
