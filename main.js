@@ -44,7 +44,7 @@ window.onload = function() {
     var smallCanvases = document.querySelectorAll("#list-of-tasks > li > canvas");
     var smallContexts = map(smallCanvases, function(a){return a.getContext("2d");});
     console.log(smallContexts);
-    for(var i in smallCanvases){
+    for(var i in smallContexts){
       smallCanvases[i].width = 100;
       smallCanvases[i].height = 100;
       smallContexts[i].fillStyle = colors[i];
