@@ -17,8 +17,21 @@ html, body {
 
 #list-of-tasks {
   overflow-y:auto;
+  padding-left:0;
+  text-align:left;
+  vertical-align: middle;
+  font-size:20px;
 }
 
 #list-of-tasks > * > *{
   display:inline-block;
+}
+
+#list-of-tasks > li > canvas {
+  width:100px;
+  height:100px;
+}
+
+#list-of-tasks > li > div {
+  width: calc(100% - 120px);
 }
