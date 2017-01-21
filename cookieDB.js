@@ -22,3 +22,7 @@ function setUpDb(){
 function addAlarm(alr){//alarm type
   Cookies.set("Alarms", Cookies.get("Alarms").concat(alr));
 }
+
+function getAlarms(){
+  return Cookies.get("Alarms");
+}
