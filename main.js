@@ -1,4 +1,5 @@
 window.onload = function() {
-  document.querySelector('#greeting').innerText =
-    'Hello, World! It is ' + new Date();
+  chrome.storage.sync.set({"test":true, "meme?":"Yes!"}, null);
+
+  chrome.storage.sync.get(null, function(object){console.log(object);});
 };
