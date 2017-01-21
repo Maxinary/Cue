@@ -22,10 +22,6 @@ function resize(){
   $("#big_circle").height($("#big_circle").width());
 }
 
-function registerNewDev(){
-  
-}
-
 var WorldStates = {"MainPage":0, "Add":1};
 function setWorldState(state){
   switch(state){
