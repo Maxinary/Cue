@@ -54,7 +54,7 @@ window.onload = function() {
              smallContexts[i]);
     }
   }
-    chrome.storage.sync.set(
+  /*  chrome.storage.sync.set(
     {
       "0":{
         "name": "Kanye",  
@@ -106,6 +106,6 @@ window.onload = function() {
   
   chrome.storage.sync.get("2", function(obj){
     console.log('Task 2', JSON.stringify(obj));
-  });
+  });*/
 
 };

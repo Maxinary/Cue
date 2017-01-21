@@ -8,18 +8,27 @@ body {
 
 html, body {
   overflow-y: auto;
+  font-family: Helvetica-Neue, Helvetica, Sans-Serif;
 }
 
 #big_circle {
-  width:90%;
+  margin-top:20px;
+  width:70%;
 }
 
 #list-of-tasks {
+  margin-top:200px;
+  margin-left: 60px;
+  margin-right:50px;
   overflow-y:auto;
   padding-left:0;
   text-align:left;
   vertical-align: middle;
-  font-size:20px;
+  font-size:50px;
+}
+
+#list-of-tasks > li {
+  margin-bottom:20px;
 }
 
 #list-of-tasks > li > *{
@@ -31,12 +40,12 @@ html, body {
 }
 
 #list-of-tasks > li > canvas {
-  width:100px;
-  height:100px;
+  width:150px;
+  height:150px;
 }
 
 #list-of-tasks > li > div {
-  width: calc(100% - 120px);
+  width: calc(100% - 180px);
 }
 
 #list-of-tasks > li > div > *{
@@ -44,6 +53,6 @@ html, body {
 }
 
 #list-of-tasks > li > div > *:nth-child(2) {
-  font-size:12px;
+  font-size:40px;
   color:gray;
 }
