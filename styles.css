@@ -1,5 +1,4 @@
 /* CSS file placeholder. */
-/* CSS file placeholder. */
 body {
   text-decoration: none;
   color: "pink";
@@ -8,7 +7,7 @@ body {
 }
 
 html, body {
-    overflow-y: auto;
+  overflow-y: auto;
 }
 
 #big_circle {
@@ -23,8 +22,12 @@ html, body {
   font-size:20px;
 }
 
-#list-of-tasks > * > *{
+#list-of-tasks > li > *{
   display:inline-block;
+}
+
+#list-of-tasks > li > div > *{
+  display:block;
 }
 
 #list-of-tasks > li > canvas {
@@ -34,4 +37,13 @@ html, body {
 
 #list-of-tasks > li > div {
   width: calc(100% - 120px);
+}
+
+#list-of-tasks > li > div > *{
+  width: 100%;
+}
+
+#list-of-tasks > li > div > *:nth-child(2) {
+  font-size:12px;
+  color:gray;
 }
