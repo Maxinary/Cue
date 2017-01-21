@@ -54,5 +54,58 @@ window.onload = function() {
              smallContexts[i]);
     }
   }
+    chrome.storage.sync.set(
+    {
+      "0":{
+        "name": "Kanye",  
+        "info": "DM kanye he wanted to say hi",
+        "first_time": Date(2017, 4, 9),
+        "delta_time": Date(0, 0, 7)
+      }
+    },
+    function() {
+      console.log("Saved");
+    }
+  );
   
+  chrome.storage.sync.get("0", function(obj){
+    console.log('Task 0', JSON.stringify(obj));
+  });
+  
+  chrome.storage.sync.set(
+    {
+      "1":{
+        "name": "Walk Dog",  
+        "info": "You have a dog. You need to walk it.",
+        "first_time": Date(2016, 8, 2),
+        "delta_time": Date(0, 1, 0)
+      }
+    },
+    function() {
+      console.log("Saved");
+    }
+  );
+  
+  chrome.storage.sync.get("1", function(obj){
+    console.log('Task 1', JSON.stringify(obj));
+  });
+  
+    chrome.storage.sync.set(
+    {
+      "2":{
+        "name": "Painting",  
+        "info": "The paint was expensive so you should make something.",
+        "first_time": Date(1999, 0, 0),
+        "delta_time": Date(1, 0, 0)
+      }
+    },
+    function() {
+      console.log("Saved");
+    }
+  );
+  
+  chrome.storage.sync.get("2", function(obj){
+    console.log('Task 2', JSON.stringify(obj));
+  });
+
 };
