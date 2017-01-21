@@ -34,6 +34,21 @@ function setWorldState(state){
   }
 }
 
+function setCookie() {
+  var mon_checked = $("#mon").is(':checked');
+  var tue_checked = $("#tue").is(':checked');
+  var wen_checked = $("#wen").is(':checked');
+  var thu_checked = $("#thu").is(':checked');
+  var fri_checked = $("#fri").is(':checked');
+  var sat_checked = $("#sat").is(':checked');
+  var sun_checked = $("#sun").is(':checked');
+  var name = $("#name").val();
+  var descr = $("#description").val();
+  var weeks_till = $("#weeks_till").val();
+  
+  a = new Alarm(name, descr, mon_checked, tue_checked, wen_checked, thu_checked, fri_checked, sat_checked, sun_checked, weeks_till);  
+}
+
 window.onload = function() {
   resize();
   

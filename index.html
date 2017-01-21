@@ -37,16 +37,26 @@
     </div>
     
     <div id="add">
-      <input type="text" id="name">
-      
-      <input type="text" id="description">
-      
-      <input type="time" id="inital-time">
-      
-      <input type="time" id="delta-time">
+      Name: <input type="text" id="name">
+      </br>
+      Description: <input type="text" id="description">
+      </br>
+      <label><input type="checkbox" id="mon" value="monbdsfjkbdsf"> Monday </label><br>
+      <label><input type="checkbox" id="tue" value="tue"> Tuesday</label><br>
+      <label><input type="checkbox" id="wen" value="wen"> Wednesday</label><br>
+      <label><input type="checkbox" id="thu" value="thu"> Thursday</label><br>
+      <label><input type="checkbox" id="fri" value="fri"> Friday </label><br>
+      <label><input type="checkbox" id="sat" value="sat"> Saturday </label><br>
+      <label><input type="checkbox" id="sun" value="sun"> Sunday </label><br>
+      </br>
+      Weeks till repeat: <input type="text" id="weeks_till">
+      </br>
+      <input id="clickMe" type="button" value="clickme" onclick="setCookie();" />
+      </br>
     </div>
     
     <script src="js.cookie.js"></script>
+    <script src="cookieDB.js"></script>
     <script src="jquery-3.1.1.min.js"></script>
     <script src="main.js"></script>
 
