@@ -22,6 +22,22 @@ function resize(){
   $("#big_circle").height($("#big_circle").width());
 }
 
+function registerNewDev(){
+  
+}
+
+var WorldStates = {"MainPage":0, "Add":1};
+function setWorldState(state){
+  switch(state){
+    case WorldStates.MainPage://draw
+      $("#add").animate({"top":"-100%"}, 1000, "swing", null);
+      break;
+    case WorldStates.Add:
+      $("#add").animate({"top":"0"}, 1000, "swing", null);
+      break;
+  }
+}
+
 window.onload = function() {
   resize();
   
@@ -107,5 +123,4 @@ window.onload = function() {
   chrome.storage.sync.get("2", function(obj){
     console.log('Task 2', JSON.stringify(obj));
   });*/
-
 };
