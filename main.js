@@ -43,7 +43,7 @@ function loadCookies() {
     
     var specialString = "";
     
-    if(cCookies[i].descr.toLowerCase().indexOf("driv") !== -1){
+    if(cCookies[i].descr.toLowerCase().indexOf("driv") !== -1 || cCookies[i].name.toLowerCase().indexOf("driv") !== -1){
       specialString = uber;
     }
     
@@ -114,6 +114,18 @@ function setCookie() {
   addAlarm(a);
   setWorldState(WorldStates.MainPage);
   loadCookies();
+  
+  $("#mon").attr('checked',false);
+  $("#tue").attr('checked',false);
+  $("#wen").attr('checked',false);
+  $("#thu").attr('checked',false);
+  $("#fri").attr('checked',false);
+  $("#sat").attr('checked',false);
+  $("#sun").attr('checked',false);
+  $("#name").val("");
+  $("#description").val("");
+  $("#weeks_till").val("");
+  $("#how_long").val("");
 }
 
 var bigCirc;
@@ -139,10 +151,10 @@ function resetDraw(){
       var cAngle = 0;
       for(var i in percents){
         bigCtx.fillStyle = colors[i%colors.length];
-        arcSeg(bigCirc.width/2, bigCirc.height/2, bigCirc.width/2, bigCirc.height/3, cAngle + 0.03, cAngle + 0.03 + Math.PI*2/percents.length * percents[i], bigCtx);
+        arcSeg(bigCirc.width/2, bigCirc.height/2, bigCirc.width/2 - 20, bigCirc.height/3, cAngle + 0.03, cAngle + 0.03 + Math.PI*2/percents.length * percents[i], bigCtx);
         cAngle += Math.PI*2/percents.length * percents[i];
       }
-      $("#numNum").html(Math.floor(100*sum(percents))+"%");
+      $("#numNum").html(Math.floor(100*sum(percents)/percents.length)+"%");
       
       document.getElementById("big_circle").onclick = setSelected(-1);
       
@@ -152,7 +164,12 @@ function resetDraw(){
         smallCanvases[i].parentElement.onclick = setSelected(i);
         
         smallContexts[i].fillStyle = colors[i];
-        smallPercents[i].innerHTML = Math.floor(100*percents[i]);
+        smallPercents[i].width = 50;
+        if(Math.floor(100*percents[i]) < 100){
+          smallPercents[i].innerHTML = Math.floor(100*percents[i]);
+        }else{
+          smallPercents[i].innerHTML = "&#x2713;";
+        }
         
         var deltaTheta = 0;
         if(i == index){

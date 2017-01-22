@@ -48,7 +48,7 @@ html, body {
   height:150px;
 }
 
-#list-of-tasks > li > div {
+#list-of-tasks > li > div:nth-child(3) {
   width: calc(100% - 180px);
 }
 
@@ -122,7 +122,7 @@ input[type=checkbox] {
   left:114px;
   padding-top:46px;
   vertical-align:middle;
-  height:150px;
+  text-align:center;
 }
 
 #info{
