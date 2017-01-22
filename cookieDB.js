@@ -21,7 +21,8 @@ function initDB(){
 }
 
 function addAlarm(alr){//alarm type
-  Cookies.set("Alarms", Cookies.get("Alarms").concat(alr));
+  console.log(JSON.parse(JSON.stringify(alr)));
+  Cookies.set("Alarms", JSON.parse(Cookies.get("Alarms")).concat([alr]));
 }
 
 function getAlarms(){
