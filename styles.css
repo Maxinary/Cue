@@ -126,5 +126,9 @@ input[type=checkbox] {
 }
 
 #info{
-  
+  width:100%;
+  top:12.5%;
+  position:absolute;
+  font-size:50px;
+  text-align:center;
 }

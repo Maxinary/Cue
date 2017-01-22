@@ -19,6 +19,14 @@ function map(arr, fn){
   return retArr;
 }
 
+function sum(arr){
+  var s = 0;
+  for(var i in arr){
+    s += arr[i];
+  }
+  return s;
+}
+
 function resize(){
 //  $("#big_circle").css({"top" : 2*($("body").width() - $("#big_circle").width())});
   $("#big_circle").height($("#big_circle").width());
@@ -116,6 +124,7 @@ function resetDraw(){
         arcSeg(bigCirc.width/2, bigCirc.height/2, bigCirc.width/2, bigCirc.height/3, cAngle + 0.03, cAngle + 0.03 + Math.PI*2/percents.length * percents[i], bigCtx);
         cAngle += Math.PI*2/percents.length * percents[i];
       }
+      $("#numNum").html(Math.floor(100*sum(percents))+"%");
       
       document.getElementById("big_circle").onclick = setSelected(-1);
       

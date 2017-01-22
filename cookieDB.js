@@ -26,6 +26,12 @@ function addAlarm(alr){//alarm type
   Cookies.set("Alarms", getAlarms().concat([alr]));
 }
 
+function removeAlarm(index){
+  var k = getAlarms();
+  k.splice(index, 1);
+  Cookies.set("Alarms", k);
+}
+
 function getAlarms(){
   return JSON.parse(Cookies.get("Alarms"));
 }
