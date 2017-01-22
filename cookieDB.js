@@ -15,7 +15,7 @@ class Alarm{
 }
 
 
-function setUpDb(){
+function initDB(){
   Cookies.set("Alarms", []);
 }
 

@@ -55,6 +55,9 @@ function setCookie() {
 window.onload = function() {
   resize();
   
+  if(Cookies.get("Alarms") === undefined)
+    initDB();
+  
   var percents = [0.6,0.3,1.0];
   var colors = ["#E91E63", "#2196F3", "#76FF03"];
   {
@@ -62,16 +65,17 @@ window.onload = function() {
     bigCirc.width = $("#big_circle").width();
     bigCirc.height = $("#big_circle").height();
     var bigCtx = bigCirc.getContext("2d");
-  
+    
     
     var cAngle = 0;
     for(var i in percents){
       bigCtx.fillStyle = colors[i];
       arcSeg(bigCirc.width/2, bigCirc.height/2, bigCirc.width/2, bigCirc.height/3, cAngle + 0.03, cAngle + Math.PI*2/percents.length * percents[i], bigCtx);
-      cAngle += Math.PI*2/percents.length * percents[i]
+      cAngle += Math.PI*2/percents.length * percents[i];
     }
     
     var smallCanvases = document.querySelectorAll("#list-of-tasks > li > canvas");
+    var smallPercents = document.querySelectorAll(".percent");
     var smallContexts = map(smallCanvases, function(a){return a.getContext("2d");});
     console.log(smallContexts);
     for(var i in smallContexts){
@@ -84,57 +88,4 @@ window.onload = function() {
              smallContexts[i]);
     }
   }
-  /*  chrome.storage.sync.set(
-    {
-      "0":{
-        "name": "Kanye",  
-        "info": "DM kanye he wanted to say hi",
-        "first_time": Date(2017, 4, 9),
-        "delta_time": Date(0, 0, 7)
-      }
-    },
-    function() {
-      console.log("Saved");
-    }
-  );
-  
-  chrome.storage.sync.get("0", function(obj){
-    console.log('Task 0', JSON.stringify(obj));
-  });
-  
-  chrome.storage.sync.set(
-    {
-      "1":{
-        "name": "Walk Dog",  
-        "info": "You have a dog. You need to walk it.",
-        "first_time": Date(2016, 8, 2),
-        "delta_time": Date(0, 1, 0)
-      }
-    },
-    function() {
-      console.log("Saved");
-    }
-  );
-  
-  chrome.storage.sync.get("1", function(obj){
-    console.log('Task 1', JSON.stringify(obj));
-  });
-  
-    chrome.storage.sync.set(
-    {
-      "2":{
-        "name": "Painting",  
-        "info": "The paint was expensive so you should make something.",
-        "first_time": Date(1999, 0, 0),
-        "delta_time": Date(1, 0, 0)
-      }
-    },
-    function() {
-      console.log("Saved");
-    }
-  );
-  
-  chrome.storage.sync.get("2", function(obj){
-    console.log('Task 2', JSON.stringify(obj));
-  });*/
 };
