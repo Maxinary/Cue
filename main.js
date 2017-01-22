@@ -1,4 +1,4 @@
-var uber = '<div class="uber" data-bttnio-id="btn-0a669f8405580be1" data-bttnio-context=\'{ "user_location": { "latitude": 40.6827, "longitude": -73.9754 }, "subject_location": { "latitude": 40.7382869, "longitude": -73.9823721 } }\' data-bttnio-inventory-mode="inline"></div>';
+var uber = '<div data-bttnio-id="btn-0a669f8405580be1" data-bttnio-context=\'{ "user_location": { "latitude": 40.6827, "longitude": -73.9754 }, "subject_location": { "latitude": 40.7382869, "longitude": -73.9823721 } }\'></div>';
 
 function arcSeg(x, y, innerRad, outerRad, theta0, theta1, ctx){
   ctx.moveTo(x + Math.cos(theta0)*innerRad, y + Math.sin(theta0)*innerRad);
