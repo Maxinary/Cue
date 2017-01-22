@@ -31,10 +31,18 @@ function loadCookies() {
   percents = [];
   $("ul").html("");
   for(var i in cCookies){
+    
+    var uberString = "";
+    
+    if(cCookies[i].descr.indexOf("Driv") !== -1 || cCookies[i].descr.indexOf("driv") !== -1){
+      uberString = uber;
+    }
+    
     $("ul").append("<li>"+
     '<canvas></canvas>\n<div class="percent"></div>'+
     "<div><div>"+cCookies[i].name+"</div>"+
     "<div>"+cCookies[i].descr+"</div></div>"+
+    uberString+
     "</li>");
     percents.push(parseFloat(cCookies[i].currentTime) / parseFloat(cCookies[i].how_long));
   }
@@ -79,7 +87,7 @@ function setCookie() {
 
   addAlarm(a);
   setWorldState(WorldStates.MainPage);
-  resetDraw();
+  loadCookies()
 }
 
 var bigCirc;
