@@ -27,10 +27,11 @@ function setWorldState(state){
   switch(state){
     case WorldStates.MainPage://draw
       $("#add").animate({"top":"-100%"}, 1000, "swing", null);
-      $("#time").animate({"top":"100%"}, 1000, "swing", null);
+      $("#mainPage").css({"overflow":"auto"});
       break;
     case WorldStates.Add:
       $("#add").animate({"top":"0"}, 1000, "swing", null);
+      $("#mainPage").css({"overflow":"hidden"});
       break;
   }
 }
