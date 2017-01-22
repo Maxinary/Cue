@@ -1,3 +1,5 @@
+var uber = '<div data-bttnio-id="btn-0a669f8405580be1" data-bttnio-context=\'{ "user_location": { "latitude": 40.6827, "longitude": -73.9754 }, "subject_location": { "latitude": 40.7382869, "longitude": -73.9823721 } }\'></div>';
+
 function arcSeg(x, y, innerRad, outerRad, theta0, theta1, ctx){
   ctx.moveTo(x + Math.cos(theta0)*innerRad, y + Math.sin(theta0)*innerRad);
   ctx.beginPath();
@@ -52,7 +54,7 @@ function setWorldState(state){
 
 var draw;
   
-var percents = [0.6,0.3,1.0];
+var percents = [];
 var colors = ["orange", "#2196F3", "#76FF03"];
 
 function setCookie() {
@@ -141,19 +143,17 @@ window.onload = function() {
   bigCirc = document.getElementById("big_circle");
   resetDraw();
   
-//  draw(0);
-
   var deltaTime = 30;
   var theta = 0;
   function animate(){
     if(currentTiming >= 0 && currentTiming < $("#list-of-tasks").children().length){//do animations
       theta += Math.PI*2 * 0.001 * deltaTime;
       draw(currentTiming, theta);
+      addTime(currentTiming, deltaTime);
     }else{
       draw();
     }
   }
   
   setInterval(animate, deltaTime);
-
 };

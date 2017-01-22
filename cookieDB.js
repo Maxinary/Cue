@@ -29,3 +29,9 @@ function addAlarm(alr){//alarm type
 function getAlarms(){
   return JSON.parse(Cookies.get("Alarms"));
 }
+
+function addTime(index, time){
+  var gA = getAlarms();
+  gA[index].currentTime += time;
+  Cookies.set("Alarms", gA)
+}
