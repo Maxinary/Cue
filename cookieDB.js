@@ -2,14 +2,8 @@ class Alarm{
   constructor(name, descr, mon, tues, wed, thurs, fri, sat, sun, how_long){
     this.name = name;
     this.descr = descr;
-    this.mon = mon;
-    this.tues = tues;
-    this.wed = wed;
-    this.thurs = thurs;
-    this.fri = fri;
-    this.sat = sat;
-    this.sun = sun;
-    
+    this.days = [sun, mon, tues, wed, thurs, fri, sat];
+
     this.how_long = how_long;
     this.currentTime = 0;
   }

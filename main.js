@@ -40,26 +40,27 @@ function loadCookies() {
   percents = [];
   $("ul").html("");
   for(var i in cCookies){
-    
-    var specialString = "";
-    
-    if(cCookies[i].descr.toLowerCase().indexOf("driv") !== -1 || cCookies[i].name.toLowerCase().indexOf("driv") !== -1){
-      specialString = uber;
+    if(cCookies[i].days[(new Date()).getDay()]){
+      var specialString = "";
+      
+      if(cCookies[i].descr.toLowerCase().indexOf("driv") !== -1 || cCookies[i].name.toLowerCase().indexOf("driv") !== -1){
+        specialString = uber;
+      }
+      
+      if(cCookies[i].descr.toLowerCase().indexOf("lunch") != -1 || cCookies[i].descr.toLowerCase().indexOf("dinner") != -1 || cCookies[i].descr.toLowerCase().indexOf("eat") != -1 ||
+         cCookies[i].name.toLowerCase().indexOf("lunch")  != -1 || cCookies[i].name.toLowerCase().indexOf("dinner")  != -1 || cCookies[i].name.toLowerCase().indexOf("eat")  != -1){
+          
+          specialString = dining; 
+      }
+      
+      $("ul").append("<li>"+
+      '<canvas></canvas>\n<div class="percent"></div>'+
+      "<div><div>"+cCookies[i].name+"</div>"+
+      "<div>"+cCookies[i].descr+"</div></div>"+
+      specialString+
+      "</li>");
+      percents.push(parseFloat(cCookies[i].currentTime) / parseFloat(cCookies[i].how_long));
     }
-    
-    if(cCookies[i].descr.toLowerCase().indexOf("lunch") != -1 || cCookies[i].descr.toLowerCase().indexOf("dinner") != -1 || cCookies[i].descr.toLowerCase().indexOf("eat") != -1 ||
-       cCookies[i].name.toLowerCase().indexOf("lunch")  != -1 || cCookies[i].name.toLowerCase().indexOf("dinner")  != -1 || cCookies[i].name.toLowerCase().indexOf("eat")  != -1){
-        
-        specialString = dining; 
-    }
-    
-    $("ul").append("<li>"+
-    '<canvas></canvas>\n<div class="percent"></div>'+
-    "<div><div>"+cCookies[i].name+"</div>"+
-    "<div>"+cCookies[i].descr+"</div></div>"+
-    specialString+
-    "</li>");
-    percents.push(parseFloat(cCookies[i].currentTime) / parseFloat(cCookies[i].how_long));
   }
   
   resetDraw();
