@@ -22,6 +22,20 @@ function resize(){
   $("#big_circle").height($("#big_circle").width());
 }
 
+function loadCookies() {
+  var cCookies = getAlarms();
+  for(var i in cCookies){
+    $("ul").append("<li>"+
+    '<canvas></canvas>\n<div class="percent"></div>'+
+    "<div><div>"+cCookies[i].name+"</div>"+
+    "<div>"+cCookies[i].descr+"</div></div>"+
+    "</li>");
+    percents.push(parseInt(cCookies[i].currentTime) / parseInt(cCookies[i].how_long));
+  }
+  
+  resetDraw();
+}
+
 var WorldStates = {"MainPage":0, "Add":1};
 function setWorldState(state){
   switch(state){
@@ -36,6 +50,11 @@ function setWorldState(state){
   }
 }
 
+var draw;
+  
+var percents = [0.6,0.3,1.0];
+var colors = ["orange", "#2196F3", "#76FF03"];
+
 function setCookie() {
   var mon_checked = $("#mon").is(':checked');
   var tue_checked = $("#tue").is(':checked');
@@ -47,26 +66,19 @@ function setCookie() {
   var name = $("#name").val();
   var descr = $("#description").val();
   var weeks_till = $("#weeks_till").val();
+  var length = $("#how_long").val();
+
   
-  a = new Alarm(name, descr, mon_checked, tue_checked, wen_checked, thu_checked, fri_checked, sat_checked, sun_checked, weeks_till);  
+  var a = new Alarm(name, descr, mon_checked, tue_checked, wen_checked, thu_checked, fri_checked, sat_checked, sun_checked, weeks_till, length);
 
   addAlarm(a);
   setWorldState(WorldStates.MainPage);
 }
 
-var currentTiming = -1;
-window.onload = function() {
-  resize();
-  
-  if(Cookies.get("Alarms") === undefined)
-    initDB();
-  
-  
-  var percents = [0.6,0.3,1.0];
-  var colors = ["#E91E63", "#2196F3", "#76FF03"];
-  
-  var draw = (function(){  
-    var bigCirc = document.getElementById("big_circle");
+var bigCirc;
+
+function resetDraw(){
+  draw = (function(){  
     bigCirc.width = $("#big_circle").width();
     bigCirc.height = $("#big_circle").height();
     var bigCtx = bigCirc.getContext("2d");
@@ -82,10 +94,11 @@ window.onload = function() {
     }
   
     function draw(index, theta){
+      bigCtx.clearRect(0, 0, bigCirc.width, bigCirc.height);
       var cAngle = 0;
       for(var i in percents){
-        bigCtx.fillStyle = colors[i];
-        arcSeg(bigCirc.width/2, bigCirc.height/2, bigCirc.width/2, bigCirc.height/3, cAngle + 0.03, cAngle + Math.PI*2/percents.length * percents[i], bigCtx);
+        bigCtx.fillStyle = colors[i%colors.length];
+        arcSeg(bigCirc.width/2, bigCirc.height/2, bigCirc.width/2, bigCirc.height/3, cAngle + 0.03, cAngle + 0.03 + Math.PI*2/percents.length * percents[i], bigCtx);
         cAngle += Math.PI*2/percents.length * percents[i];
       }
       
@@ -102,7 +115,6 @@ window.onload = function() {
         var deltaTheta = 0;
         if(i == index){
           deltaTheta = theta;
-          console.log(i);
         }
         arcSeg(smallCanvases[i].width/2, smallCanvases[i].height/2, 
                smallCanvases[i].width/4, smallCanvases[i].width/2, 
@@ -112,8 +124,24 @@ window.onload = function() {
     }
     return draw;
   })();
+}
+
+var currentTiming = -1;
+window.onload = function() {
+  resize();
   
-  draw(0);
+  if(Cookies.get("Alarms") === undefined){
+    initDB();
+  }
+  
+  if(getAlarms().length == 0){
+    setWorldState(WorldStates.Add);
+  }
+    
+  bigCirc = document.getElementById("big_circle");
+  resetDraw();
+  
+//  draw(0);
 
   var deltaTime = 30;
   var theta = 0;

@@ -12,6 +12,7 @@ class Alarm{
     
     this.weeksUntilRep = weeksUntilRep;
     this.how_long = how_long;
+    this.currentTime = 1;
   }
 }
 
@@ -22,9 +23,9 @@ function initDB(){
 
 function addAlarm(alr){//alarm type
   console.log(JSON.parse(JSON.stringify(alr)));
-  Cookies.set("Alarms", JSON.parse(Cookies.get("Alarms")).concat([alr]));
+  Cookies.set("Alarms", getAlarms().concat([alr]));
 }
 
 function getAlarms(){
-  return Cookies.get("Alarms");
+  return JSON.parse(Cookies.get("Alarms"));
 }
