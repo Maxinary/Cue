@@ -80,8 +80,7 @@ input[type="text"] {
 #add > button {
     background:none;
     border: 2px solid black;
-    position:absolute;
-    right:0;
+    margin-left:200px;
 }
 
 input[type=checkbox] {
@@ -129,8 +128,14 @@ input[type=checkbox] {
 
 #info{
   width:100%;
-  top:12.5%;
+  top:15%;
   position:absolute;
   font-size:50px;
   text-align:center;
+  color:gray;
+}
+
+#numNum{
+  font-size:80px;
+  color:black;
 }
