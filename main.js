@@ -63,6 +63,17 @@ function loadCookies() {
   }
   
   resetDraw();
+  
+    (function(u,s,e,b,t,n){
+    u['__bttnio']=b;u[b]=u[b]||function(){(u[b].q=u[b].q||[]).push(arguments)};t=s.createElement(e);n=s.getElementsByTagName(e)[0];t.async=1;t.src='https://web.btncdn.com/v1/button.js';n.parentNode.insertBefore(t,n)
+  })(window, document, 'script', 'bttnio');
+
+  window.ButtonWebConfig = {
+    applicationId: 'app-1db3f0bedc962e4e'
+  };
+  (function(u,s,e,b,t,n){
+    u['__bttnio']=b;u[b]=u[b]||function(){(u[b].q=u[b].q||[]).push(arguments)};t=s.createElement(e);n=s.getElementsByTagName(e)[0];t.async=1;t.src='https://web.btncdn.com/v1/button.js';n.parentNode.insertBefore(t,n)
+  })(window, document, 'script', 'bttnio');
 }
 
 var WorldStates = {"MainPage":0, "Add":1};
@@ -102,7 +113,7 @@ function setCookie() {
 
   addAlarm(a);
   setWorldState(WorldStates.MainPage);
-  loadCookies()
+  loadCookies();
 }
 
 var bigCirc;
