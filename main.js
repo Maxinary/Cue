@@ -1,4 +1,5 @@
 var uber = '<div data-bttnio-id="btn-0a669f8405580be1" data-bttnio-context=\'{ "user_location": { "latitude": 40.6827, "longitude": -73.9754 }, "subject_location": { "latitude": 40.7382869, "longitude": -73.9823721 } }\'></div>';
+var dining = '<div data-bttnio-id="btn-4aa13ae2ee635b99" data-bttnio-context=\'{ "user_location": { "latitude": 25.782324, "longitude": -80.2310801 } }\'></div>';
 
 function arcSeg(x, y, innerRad, outerRad, theta0, theta1, ctx){
   ctx.moveTo(x + Math.cos(theta0)*innerRad, y + Math.sin(theta0)*innerRad);
@@ -40,10 +41,16 @@ function loadCookies() {
   $("ul").html("");
   for(var i in cCookies){
     
-    var uberString = "";
+    var specialString = "";
     
-    if(cCookies[i].descr.indexOf("Driv") !== -1 || cCookies[i].descr.indexOf("driv") !== -1){
-      uberString = uber;
+    if(cCookies[i].descr.toLowerCase().indexOf("driv") !== -1){
+      specialString = uber;
+    }
+    
+    if(cCookies[i].descr.toLowerCase().indexOf("lunch")) || cCookies[i].descr.toLowerCase().indexOf("dinner")) || cCookies[i].descr.toLowerCase().indexOf("eat")) ||
+       cCookies[i].name.toLowerCase().indexOf("lunch"))  || cCookies[i].name.toLowerCase().indexOf("dinner"))  || cCookies[i].name.toLowerCase().indexOf("eat"))){
+        
+        specialString = dining; 
     }
     
     $("ul").append("<li>"+
@@ -183,6 +190,15 @@ window.onload = function() {
   
   setInterval(animate, deltaTime);
   
+  window.ButtonWebConfig = {
+    applicationId: 'app-1db3f0bedc962e4e'
+  };
+  
+  
+  (function(u,s,e,b,t,n){
+    u['__bttnio']=b;u[b]=u[b]||function(){(u[b].q=u[b].q||[]).push(arguments)};t=s.createElement(e);n=s.getElementsByTagName(e)[0];t.async=1;t.src='https://web.btncdn.com/v1/button.js';n.parentNode.insertBefore(t,n)
+  })(window, document, 'script', 'bttnio');
+
   window.ButtonWebConfig = {
     applicationId: 'app-1db3f0bedc962e4e'
   };
