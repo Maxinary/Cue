@@ -46,8 +46,9 @@ function setCookie() {
   var name = $("#name").val();
   var descr = $("#description").val();
   var weeks_till = $("#weeks_till").val();
+  var how_long = $("#how_long").val();
   
-  a = new Alarm(name, descr, mon_checked, tue_checked, wen_checked, thu_checked, fri_checked, sat_checked, sun_checked, weeks_till);  
+  a = new Alarm(name, descr, mon_checked, tue_checked, wen_checked, thu_checked, fri_checked, sat_checked, sun_checked, weeks_till, how_long);  
 
   addAlarm(a);
   setWorldState(WorldStates.MainPage);
