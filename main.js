@@ -74,6 +74,12 @@ window.onload = function() {
     var smallPercents = document.querySelectorAll(".percent");
     var smallContexts = map(smallCanvases, function(a){return a.getContext("2d");});
   
+    function setSelected(index){
+      return function(){
+        currentTiming = index;
+      };
+    }
+  
     function draw(index, theta){
       var cAngle = 0;
       for(var i in percents){
@@ -82,9 +88,13 @@ window.onload = function() {
         cAngle += Math.PI*2/percents.length * percents[i];
       }
       
+      document.getElementById("big_circle").onclick = setSelected(-1);
+      
       for(var i in smallContexts){
         smallCanvases[i].width = 100;
         smallCanvases[i].height = 100;
+        smallCanvases[i].parentElement.onclick = setSelected(i);
+        
         smallContexts[i].fillStyle = colors[i];
         smallPercents[i].innerHTML = Math.floor(100*percents[i]);
         
@@ -104,11 +114,11 @@ window.onload = function() {
   
   draw(0);
 
-  var deltaTime = 100;
+  var deltaTime = 30;
   var theta = 0;
   function animate(){
     if(currentTiming >= 0 && currentTiming < $("#list-of-tasks").children().length){//do animations
-      theta += Math.PI*2 * 2 / deltaTime;
+      theta += Math.PI*2 * 0.001 * deltaTime;
       draw(currentTiming, theta);
     }else{
       draw();
