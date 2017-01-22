@@ -172,8 +172,10 @@ window.onload = function() {
       theta += Math.PI*2 * 0.001 * deltaTime;
       draw(currentTiming, theta);
       addTime(currentTiming, deltaTime);
-      curModel[currentTiming].currentTime += deltaTime;
-      percents[currentTiming] = parseFloat(curModel[currentTiming].currentTime) / parseFloat(curModel[currentTiming].how_long);
+      if(curModel[currentTiming].currentTime < curModel[currentTiming].how_long){
+        curModel[currentTiming].currentTime += deltaTime;
+        percents[currentTiming] = parseFloat(curModel[currentTiming].currentTime) / parseFloat(curModel[currentTiming].how_long);
+      }
     }else{
       draw();
     }

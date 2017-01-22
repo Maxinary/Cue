@@ -38,6 +38,8 @@ function getAlarms(){
 
 function addTime(index, time){
   var gA = getAlarms();
-  gA[index].currentTime += time;
-  Cookies.set("Alarms", gA)
+  if(gA[index].currentTime < gA[index].how_long){
+    gA[index].currentTime += time;
+    Cookies.set("Alarms", gA);
+  }
 }
