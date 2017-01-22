@@ -95,6 +95,7 @@ input[type=checkbox] {
 
 #add{
   top:-100%;
+  display:block;
   position:absolute;
   overflow:auto;
   font-size: 400%;
