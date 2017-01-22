@@ -1,4 +1,4 @@
-var uber = '<div data-bttnio-id="btn-0a669f8405580be1" data-bttnio-context=\'{ "user_location": { "latitude": 40.6827, "longitude": -73.9754 }, "subject_location": { "latitude": 40.7382869, "longitude": -73.9823721 } }\'></div>';
+var uber = '<div class="uber" data-bttnio-id="btn-0a669f8405580be1" data-bttnio-context=\'{ "user_location": { "latitude": 40.6827, "longitude": -73.9754 }, "subject_location": { "latitude": 40.7382869, "longitude": -73.9823721 } }\'></div>';
 
 function arcSeg(x, y, innerRad, outerRad, theta0, theta1, ctx){
   ctx.moveTo(x + Math.cos(theta0)*innerRad, y + Math.sin(theta0)*innerRad);
@@ -24,15 +24,19 @@ function resize(){
   $("#big_circle").height($("#big_circle").width());
 }
 
+var curModel;
 function loadCookies() {
   var cCookies = getAlarms();
+  curModel = cCookies;
+  percents = [];
+  $("ul").html("");
   for(var i in cCookies){
     $("ul").append("<li>"+
     '<canvas></canvas>\n<div class="percent"></div>'+
     "<div><div>"+cCookies[i].name+"</div>"+
     "<div>"+cCookies[i].descr+"</div></div>"+
     "</li>");
-    percents.push(parseInt(cCookies[i].currentTime) / parseInt(cCookies[i].how_long));
+    percents.push(parseFloat(cCookies[i].currentTime) / parseFloat(cCookies[i].how_long));
   }
   
   resetDraw();
@@ -68,13 +72,14 @@ function setCookie() {
   var name = $("#name").val();
   var descr = $("#description").val();
   var weeks_till = $("#weeks_till").val();
-  var length = $("#how_long").val();
+  var length = parseFloat($("#how_long").val())*3600000;
 
   
   var a = new Alarm(name, descr, mon_checked, tue_checked, wen_checked, thu_checked, fri_checked, sat_checked, sun_checked, weeks_till, length);
 
   addAlarm(a);
   setWorldState(WorldStates.MainPage);
+  resetDraw();
 }
 
 var bigCirc;
@@ -141,7 +146,7 @@ window.onload = function() {
   }
     
   bigCirc = document.getElementById("big_circle");
-  resetDraw();
+  loadCookies();
   
   var deltaTime = 30;
   var theta = 0;
@@ -150,6 +155,8 @@ window.onload = function() {
       theta += Math.PI*2 * 0.001 * deltaTime;
       draw(currentTiming, theta);
       addTime(currentTiming, deltaTime);
+      curModel[currentTiming].currentTime += deltaTime;
+      percents[currentTiming] = parseFloat(curModel[currentTiming].currentTime) / parseFloat(curModel[currentTiming].how_long);
     }else{
       draw();
     }

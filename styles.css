@@ -128,3 +128,8 @@ input[type=checkbox] {
 #info{
   
 }
+
+.uber{
+  display:block;
+  width:100%;
+}

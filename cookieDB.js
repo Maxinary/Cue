@@ -12,7 +12,7 @@ class Alarm{
     
     this.weeksUntilRep = weeksUntilRep;
     this.how_long = how_long;
-    this.currentTime = 1;
+    this.currentTime = 0;
   }
 }
 
