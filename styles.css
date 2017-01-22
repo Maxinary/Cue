@@ -73,7 +73,7 @@ input[type="text"] {
 
        border:none; /* Get rid of the browser's styling */
        border-bottom:2px solid black; /* Add your own border */
-
+       width:50%;
     }
 
 
