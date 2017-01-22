@@ -153,9 +153,11 @@ function resetDraw(){
       bigCtx.clearRect(0, 0, bigCirc.width, bigCirc.height);
       var cAngle = 0;
       for(var i in percents){
-        bigCtx.fillStyle = colors[i%colors.length];
-        arcSeg(bigCirc.width/2, bigCirc.height/2, bigCirc.width/2 - 20, bigCirc.height/3, cAngle + 0.01, cAngle + (Math.PI*2/percents.length - 0.01) * percents[i], bigCtx);
-        cAngle += Math.PI*2/percents.length * percents[i];
+        if(percents[i] !== 0){
+          bigCtx.fillStyle = colors[i%colors.length];
+          arcSeg(bigCirc.width/2, bigCirc.height/2, bigCirc.width/2 - 20, bigCirc.height/3, cAngle + 0.01, cAngle + (Math.PI*2/percents.length - 0.01) * percents[i], bigCtx);
+          cAngle += Math.PI*2/percents.length * percents[i];
+        }
       }
       $("#numNum").html(Math.floor(100*sum(percents)/percents.length)+"%");
       

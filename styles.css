@@ -80,6 +80,8 @@ input[type="text"] {
 #add > button {
     background:none;
     border: 2px solid black;
+    position:absolute;
+    right:0;
 }
 
 input[type=checkbox] {
