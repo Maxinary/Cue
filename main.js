@@ -105,11 +105,10 @@ function setCookie() {
   var sun_checked = $("#sun").is(':checked');
   var name = $("#name").val();
   var descr = $("#description").val();
-  var weeks_till = $("#weeks_till").val();
   var length = parseFloat($("#how_long").val())*3600000;
 
   
-  var a = new Alarm(name, descr, mon_checked, tue_checked, wen_checked, thu_checked, fri_checked, sat_checked, sun_checked, weeks_till, length);
+  var a = new Alarm(name, descr, mon_checked, tue_checked, wen_checked, thu_checked, fri_checked, sat_checked, sun_checked, length);
 
   addAlarm(a);
   setWorldState(WorldStates.MainPage);
@@ -124,7 +123,6 @@ function setCookie() {
   $("#sun").attr('checked',false);
   $("#name").val("");
   $("#description").val("");
-  $("#weeks_till").val("");
   $("#how_long").val("");
 }
 

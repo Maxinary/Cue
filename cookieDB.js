@@ -1,5 +1,5 @@
 class Alarm{
-  constructor(name, descr, mon, tues, wed, thurs, fri, sat, sun, weeksUntilRep, how_long){
+  constructor(name, descr, mon, tues, wed, thurs, fri, sat, sun, how_long){
     this.name = name;
     this.descr = descr;
     this.mon = mon;
@@ -10,7 +10,6 @@ class Alarm{
     this.sat = sat;
     this.sun = sun;
     
-    this.weeksUntilRep = weeksUntilRep;
     this.how_long = how_long;
     this.currentTime = 0;
   }
