@@ -43,9 +43,11 @@
     </div>
     
     <div id="add">
-      Name: <input type="text" id="name">
       </br>
-      Description: <input type="text" id="description">
+      Name <input type="text" id="name">
+      </br>
+      Description <input type="text" id="description">
+      </br>
       </br>
       <label><input type="checkbox" id="mon" value="monbdsfjkbdsf"> Monday </label><br>
       <label><input type="checkbox" id="tue" value="tue"> Tuesday</label><br>
@@ -55,10 +57,11 @@
       <label><input type="checkbox" id="sat" value="sat"> Saturday </label><br>
       <label><input type="checkbox" id="sun" value="sun"> Sunday </label><br>
       </br>
-      Weeks till repeat: <input type="text" id="weeks_till">
+      Weeks till repeat <input type="text" id="weeks_till">
       </br>
-      <input id="clickMe" type="button" value="clickme" onclick="setCookie();" />
+      <input id="clickMe" type="button" value="clickme" onclick="(function(){setCookie()})()" />
       </br>
+      
     </div>
   </body>
 </html>

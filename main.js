@@ -47,6 +47,9 @@ function setCookie() {
   var weeks_till = $("#weeks_till").val();
   
   a = new Alarm(name, descr, mon_checked, tue_checked, wen_checked, thu_checked, fri_checked, sat_checked, sun_checked, weeks_till);  
+
+  addAlarm(a);
+  setWorldState(WorldStates.MainPage);
 }
 
 window.onload = function() {

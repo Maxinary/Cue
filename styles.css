@@ -57,15 +57,54 @@ html, body {
   color:gray;
 }
 
+#add.padding_div {
+  padding-top: 20%;
+}
+
+#add input, #add button{
+  font-size: 100%;
+}
+input[type="text"] {
+
+       border:none; /* Get rid of the browser's styling */
+       border-bottom:2px solid black; /* Add your own border */
+
+    }
+
+#add.padding_div {
+  padding-top: 20%;
+  margin-top: 20%;
+}
+
+#add > button {
+    background:none;
+    border: 2px solid black;
+}
+
+#add input[type=checkbox] {
+  -ms-transform: scale(4); /* IE */
+  -moz-transform: scale(4); /* FF */
+  -webkit-transform: scale(4); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  padding: 10px;
+  border:none;
+  border-bottom: 2px solid black;
+  display: inline;
+}
+
 #add{
   top:-100%;
   position:absolute;
   overflow:hidden;
+  font-size: 500%;
+  padding-left: 20%;
+  padding-right: 20%;
+  text-align: left;
   height:100%;
   width:100%;
   background-color:white;
+  
 }
-
 #goto-add {
   font-size:150px;
   position:absolute;
