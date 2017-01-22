@@ -99,6 +99,7 @@ input[type=checkbox] {
   overflow:hidden;
   font-size: 500%;
   text-align: left;
+  padding-top: 5%;
   height:100%;
   width:100%;
   background-color:white;
@@ -109,6 +110,7 @@ input[type=checkbox] {
   position:absolute;
   top:10px;
   left:50px;
+  margin-bottom: 20%;
 }
 
 .percent{
