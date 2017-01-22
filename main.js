@@ -94,7 +94,7 @@ function setWorldState(state){
 var draw;
   
 var percents = [];
-var colors = ["#EF5350", "#AB47BC", "#29B6F6", "#5C6BC0", "#26A69A", "#9CCC65"];
+var colors = ["#FF1744", "#2196F3", "#FF9100", "#76FF03", "#FFFF00", "#651FFF"];
 
 function setCookie() {
   var mon_checked = $("#mon").is(':checked');
@@ -141,7 +141,11 @@ function resetDraw(){
   
     function setSelected(index){
       return function(){
-        currentTiming = index;
+        if(currentTiming != index){
+          currentTiming = index;
+        }else{
+          currentTiming = -1;
+        }
       };
     }
   
