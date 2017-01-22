@@ -43,7 +43,10 @@ function loadCookies() {
     if(cCookies[i].days[(new Date()).getDay()]){
       var specialString = "";
       
-      if(cCookies[i].descr.toLowerCase().indexOf("driv") !== -1 || cCookies[i].name.toLowerCase().indexOf("driv") !== -1){
+      if(cCookies[i].descr.toLowerCase().indexOf("driv") !== -1 || cCookies[i].name.toLowerCase().indexOf("driv") !== -1 ||
+         cCookies[i].descr.toLowerCase().indexOf("meet") !== -1 || cCookies[i].name.toLowerCase().indexOf("meet") !== -1 ||
+         cCookies[i].descr.toLowerCase().indexOf("see") !== -1 || cCookies[i].name.toLowerCase().indexOf("see") !== -1
+      ){
         specialString = uber;
       }
       
