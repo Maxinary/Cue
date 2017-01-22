@@ -66,7 +66,6 @@ window.onload = function() {
     bigCirc.height = $("#big_circle").height();
     var bigCtx = bigCirc.getContext("2d");
     
-    
     var cAngle = 0;
     for(var i in percents){
       bigCtx.fillStyle = colors[i];
@@ -82,6 +81,7 @@ window.onload = function() {
       smallCanvases[i].width = 100;
       smallCanvases[i].height = 100;
       smallContexts[i].fillStyle = colors[i];
+      smallPercents[i].innerHTML = Math.floor(100*percents[i]);
       arcSeg(smallCanvases[i].width/2, smallCanvases[i].height/2, 
              smallCanvases[i].width/4, smallCanvases[i].width/2, 
              0, 2*Math.PI * percents[i], 
