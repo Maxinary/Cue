@@ -46,48 +46,75 @@ function setCookie() {
   var name = $("#name").val();
   var descr = $("#description").val();
   var weeks_till = $("#weeks_till").val();
-  var how_long = $("#how_long").val();
   
-  a = new Alarm(name, descr, mon_checked, tue_checked, wen_checked, thu_checked, fri_checked, sat_checked, sun_checked, weeks_till, how_long);  
+  a = new Alarm(name, descr, mon_checked, tue_checked, wen_checked, thu_checked, fri_checked, sat_checked, sun_checked, weeks_till);  
 
   addAlarm(a);
   setWorldState(WorldStates.MainPage);
 }
 
+var currentTiming = -1;
 window.onload = function() {
   resize();
   
   if(Cookies.get("Alarms") === undefined)
     initDB();
   
+  
   var percents = [0.6,0.3,1.0];
   var colors = ["#E91E63", "#2196F3", "#76FF03"];
-  {
+  
+  var draw = (function(){  
     var bigCirc = document.getElementById("big_circle");
     bigCirc.width = $("#big_circle").width();
     bigCirc.height = $("#big_circle").height();
     var bigCtx = bigCirc.getContext("2d");
-    
-    var cAngle = 0;
-    for(var i in percents){
-      bigCtx.fillStyle = colors[i];
-      arcSeg(bigCirc.width/2, bigCirc.height/2, bigCirc.width/2, bigCirc.height/3, cAngle + 0.03, cAngle + Math.PI*2/percents.length * percents[i], bigCtx);
-      cAngle += Math.PI*2/percents.length * percents[i];
-    }
-    
+  
     var smallCanvases = document.querySelectorAll("#list-of-tasks > li > canvas");
     var smallPercents = document.querySelectorAll(".percent");
     var smallContexts = map(smallCanvases, function(a){return a.getContext("2d");});
-    console.log(smallContexts);
-    for(var i in smallContexts){
-      smallCanvases[i].width = 100;
-      smallCanvases[i].height = 100;
-      smallContexts[i].fillStyle = colors[i];
-      smallPercents[i].innerHTML = Math.floor(100*percents[i]);
-      arcSeg(smallCanvases[i].width/2, smallCanvases[i].height/2, 
-             smallCanvases[i].width/4, smallCanvases[i].width/2, 
-             0, 2*Math.PI * percents[i], 
-             smallContexts[i]);
+  
+    function draw(index, theta){
+      var cAngle = 0;
+      for(var i in percents){
+        bigCtx.fillStyle = colors[i];
+        arcSeg(bigCirc.width/2, bigCirc.height/2, bigCirc.width/2, bigCirc.height/3, cAngle + 0.03, cAngle + Math.PI*2/percents.length * percents[i], bigCtx);
+        cAngle += Math.PI*2/percents.length * percents[i];
+      }
+      
+      for(var i in smallContexts){
+        smallCanvases[i].width = 100;
+        smallCanvases[i].height = 100;
+        smallContexts[i].fillStyle = colors[i];
+        smallPercents[i].innerHTML = Math.floor(100*percents[i]);
+        
+        var deltaTheta = 0;
+        if(i == index){
+          deltaTheta = theta;
+          console.log(i);
+        }
+        arcSeg(smallCanvases[i].width/2, smallCanvases[i].height/2, 
+               smallCanvases[i].width/4, smallCanvases[i].width/2, 
+               deltaTheta, deltaTheta + 2*Math.PI * percents[i], 
+               smallContexts[i]);
+      }
+    }
+    return draw;
+  })();
+  
+  draw(0);
+
+  var deltaTime = 100;
+  var theta = 0;
+  function animate(){
+    if(currentTiming >= 0 && currentTiming < $("#list-of-tasks").children().length){//do animations
+      theta += Math.PI*2 * 2 / deltaTime;
+      draw(currentTiming, theta);
+    }else{
+      draw();
     }
   }
+  
+  setInterval(animate, deltaTime);
+
 };
