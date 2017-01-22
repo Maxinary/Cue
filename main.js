@@ -47,8 +47,8 @@ function loadCookies() {
       specialString = uber;
     }
     
-    if(cCookies[i].descr.toLowerCase().indexOf("lunch")) || cCookies[i].descr.toLowerCase().indexOf("dinner")) || cCookies[i].descr.toLowerCase().indexOf("eat")) ||
-       cCookies[i].name.toLowerCase().indexOf("lunch"))  || cCookies[i].name.toLowerCase().indexOf("dinner"))  || cCookies[i].name.toLowerCase().indexOf("eat"))){
+    if(cCookies[i].descr.toLowerCase().indexOf("lunch") != -1 || cCookies[i].descr.toLowerCase().indexOf("dinner") != -1 || cCookies[i].descr.toLowerCase().indexOf("eat") != -1 ||
+       cCookies[i].name.toLowerCase().indexOf("lunch")  != -1 || cCookies[i].name.toLowerCase().indexOf("dinner")  != -1 || cCookies[i].name.toLowerCase().indexOf("eat")  != -1){
         
         specialString = dining; 
     }
@@ -57,7 +57,7 @@ function loadCookies() {
     '<canvas></canvas>\n<div class="percent"></div>'+
     "<div><div>"+cCookies[i].name+"</div>"+
     "<div>"+cCookies[i].descr+"</div></div>"+
-    uberString+
+    specialString+
     "</li>");
     percents.push(parseFloat(cCookies[i].currentTime) / parseFloat(cCookies[i].how_long));
   }
