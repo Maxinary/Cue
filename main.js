@@ -118,13 +118,13 @@ function setCookie() {
   setWorldState(WorldStates.MainPage);
   loadCookies();
   
-  $("#mon").attr('checked',false);
-  $("#tue").attr('checked',false);
-  $("#wen").attr('checked',false);
-  $("#thu").attr('checked',false);
-  $("#fri").attr('checked',false);
-  $("#sat").attr('checked',false);
-  $("#sun").attr('checked',false);
+  $("#mon").prop('checked',false);
+  $("#tue").prop('checked',false);
+  $("#wen").prop('checked',false);
+  $("#thu").prop('checked',false);
+  $("#fri").prop('checked',false);
+  $("#sat").prop('checked',false);
+  $("#sun").prop('checked',false);
   $("#name").val("");
   $("#description").val("");
   $("#how_long").val("");
