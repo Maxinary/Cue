@@ -139,3 +139,28 @@ input[type=checkbox] {
   font-size:80px;
   color:black;
 }
+
+/** 
+http://stackoverflow.com/questions/4148499/how-to-style-checkbox-using-css
+**/
+
+input[type="checkbox"] {
+    display:none;
+}
+
+input[type="checkbox"] + label span {
+    display:inline-block;
+    width:0px;
+    height:10px;
+    margin:0px 0 0 0;
+    vertical-align:middle;
+    cursor:pointer;  
+}
+
+input[type="checkbox"]:checked + label {
+  color: F0F000;
+  background-color: #000000;
+  font-color: #FFFFFF
+}
+
+
