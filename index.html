@@ -25,15 +25,19 @@
     
     <div id="add">
         <div class="padding_div">
-        <div id="goto-add" onclick="(function(){setWorldState(WorldStates.MainPage);})()"><</div>
+        <div id="goto-add" onclick="(function(){setWorldState(WorldStates.MainPage);})()">⬅</div>
 
-        </br>
+        <div id="add_input">        
         Name <input type="text" id="name">
-        </br>
+        </div>
+
+        <div id="add_input">        
         Description <input type="text" id="description">
-        </br>
+        </div>
+
+        <div id="add_input">        
         How long (hrs) <input type="text" id="how_long">
-        </br>
+        </div>
 
 
         <input type="checkbox" id="mon" name="mon" />
@@ -57,16 +61,6 @@
         <input type="checkbox" id="sun" name="sun" />
         <label for="sun"><span></span>Sun</label>
 
-        <!--
-        <input type="checkbox" id="mon" value="mon"> Monday </label><br>
-        <label><input type="checkbox" id="tue" value="tue"> Tuesday</label><br>
-        <label><input type="checkbox" id="wen" value="wen"> Wednesday</label><br>
-        <label><input type="checkbox" id="thu" value="thu"> Thursday</label><br>
-        <label><input type="checkbox" id="fri" value="fri"> Friday </label><br>
-        <label><input type="checkbox" id="sat" value="sat"> Saturday </label><br>
-        <label><input type="checkbox" id="sun" value="sun"> Sunday </label><br>
-        -->
-        
         </br>
         <input id="clickMe" type="button" value="Add New Goal!" onclick="(function(){setCookie()})()" />
         </br>

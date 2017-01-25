@@ -72,7 +72,7 @@ html, body {
 input[type="text"] {
 
        border:none; /* Get rid of the browser's styling */
-       border-bottom:2px solid black; /* Add your own border */
+       /*border-bottom:2px solid black; /* Add your own border */
        width:50%;
     }
 
@@ -140,6 +140,11 @@ input[type=checkbox] {
   color:black;
 }
 
+#add_input {
+    border-style: none;
+    border-bottom: solid thick;
+
+}
 /** 
 http://stackoverflow.com/questions/4148499/how-to-style-checkbox-using-css
 **/
@@ -154,13 +159,14 @@ input[type="checkbox"] + label span {
     height:10px;
     margin:0px 0 0 0;
     vertical-align:middle;
-    cursor:pointer;  
+    cursor:pointer; 
 }
 
 input[type="checkbox"]:checked + label {
-  color: F0F000;
+  color: #FFFFFF;
   background-color: #000000;
-  font-color: #FFFFFF
 }
+
+
 
 
