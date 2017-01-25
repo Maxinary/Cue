@@ -75,11 +75,10 @@ input[type="text"] {
        width:50%;
     }
 
-
-#add > button {
+#clickMe {
     background:none;
     border: 2px solid black;
-    margin-left:200px;
+    margin-top: 5%;
 }
 
 input[type=checkbox] {
@@ -145,6 +144,7 @@ input[type=checkbox] {
     border-style: none;
     border-bottom: solid thick;
     margin-bottom: 5%;
+    margin-right: 10%;
 
 }
 
