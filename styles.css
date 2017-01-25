@@ -1,6 +1,5 @@
 body {
   text-decoration: none;
-  color: "pink";
   text-align: center;
   
 }
@@ -102,12 +101,14 @@ input[type=checkbox] {
   font-size: 400%;
   text-align: left;
   padding-top: 5%;
+  margin-left: 5%;
   height:100%;
   width:100%;
   background-color:white;
+
 }
 
-#goto-add {
+#goto_new_page {
   font-size:150px;
   position:absolute;
   top:10px;
@@ -143,12 +144,19 @@ input[type=checkbox] {
 #add_input {
     border-style: none;
     border-bottom: solid thick;
+    margin-bottom: 5%;
 
 }
+
+#padding_div_for_under_goto_new_page {
+  /* I'm sorry for the name */
+  margin-bottom: 20%;
+}
+
+
 /** 
 http://stackoverflow.com/questions/4148499/how-to-style-checkbox-using-css
 **/
-
 input[type="checkbox"] {
     display:none;
 }

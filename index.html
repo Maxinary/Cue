@@ -12,7 +12,9 @@
   
   <body>  
     <div id="mainPage">
-      <div id="goto-add" onclick="(function(){setWorldState(WorldStates.Add);})()">+</div>
+      <div id="goto_new_page" onclick="(function(){setWorldState(WorldStates.Add);})()">+</div>
+      <div id="padding_div_for_under_goto_new_page"></div>
+
       <canvas id="big_circle"></canvas>
       <div id="info">
         You completed
@@ -24,9 +26,10 @@
     </div>
     
     <div id="add">
-        <div class="padding_div">
-        <div id="goto-add" onclick="(function(){setWorldState(WorldStates.MainPage);})()">⬅</div>
 
+        <div id="goto_new_page" onclick="(function(){setWorldState(WorldStates.MainPage);})()"><</div>
+
+        <div id="padding_div_for_under_goto_new_page"></div>
         <div id="add_input">        
         Name <input type="text" id="name">
         </div>
