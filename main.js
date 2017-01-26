@@ -39,22 +39,22 @@ function loadCookies() {
   curModel = cCookies;
   percents = [];
   $("ul").html("");
-  for(var i in cCookies){
+
     if(cCookies[i].days[(new Date()).getDay()]){
       var specialString = "";
-      
-      if(cCookies[i].descr.toLowerCase().indexOf("driv") !== -1 || cCookies[i].name.toLowerCase().indexOf("driv") !== -1 ||
-         cCookies[i].descr.toLowerCase().indexOf("meet") !== -1 || cCookies[i].name.toLowerCase().indexOf("meet") !== -1 ||
-         cCookies[i].descr.toLowerCase().indexOf("see") !== -1 || cCookies[i].name.toLowerCase().indexOf("see") !== -1
-      ){
-        specialString = uber;
-      }
-      
-      if(cCookies[i].descr.toLowerCase().indexOf("lunch") != -1 || cCookies[i].descr.toLowerCase().indexOf("dinner") != -1 || cCookies[i].descr.toLowerCase().indexOf("eat") != -1 ||
-         cCookies[i].name.toLowerCase().indexOf("lunch")  != -1 || cCookies[i].name.toLowerCase().indexOf("dinner")  != -1 || cCookies[i].name.toLowerCase().indexOf("eat")  != -1){
-          
-          specialString = dining; 
-      }
+      var specialStringServices = [
+        [uber, ['driv', 'meet', 'see']]
+        [dining, ['dinner', 'lunch', 'eat']]
+      ]
+      for (var x=0; specialStringServices.length; x++) {
+        service = x[0];
+        for (var y=0; specialStringServices[1].length) {
+          if (cCookies[i].descr.toLowerCase().indexOf(specialStringServices[x][y]) !== -1 || cCookies[i].name.toLowerCase().indexOf(specialStringServices[x][y]) !== -1) {
+            specialString = service;
+          }
+        }
+        }
+      }    
       
       $("ul").append("<li>"+
       '<canvas></canvas>\n<div class="percent"></div>'+
